@@ -1,0 +1,105 @@
+equantity operators
+
+db.test.find({moviename : {$eq: "the croods"}})
+//same operators used
+
+db.test.find({moviename : {$ne: "the croods"}})
+//same operators not used
+
+
+db.test.find({id : {$gt: 20}})
+db.test.find({id : {$gte: 20}})
+
+
+db.test.find({id : {$lt: 20}})
+
+db.test.find({id : {$lte: 20}})
+
+db.test.find({id : {$lte: 20}}, {moviename:1}).pretty()
+//only for writing itom which are less than or equal to 20
+
+
+
+db.test.find({id : {$lte: 20}}, {moviename:0}).pretty()
+//moviename without value 
+
+
+db.test.find({$and : [{id:{$gt:20}}, {"moviegerne" : "Drama"}]}).pretty()
+//excute when both condition are true
+
+
+db.test.find({$or : [{id:{$gt:20}}, {"moviegerne" : "Drama"}]}).pretty()
+//when one is true
+
+db.test.find({"moviegerne" : {$not:{$eq:"Comedy"}}}).pretty()
+//all element without Comedy movie gerne
+
+
+db.test.find({$nor:[{id:{$gt:20}}, {"moviegerne" : "Horror"}]}).pretty()
+//both condition are not true
+
+
+
+
+db.test.find({id : {$in:[1,2,3,4,5]}}).pretty()
+//first check weather include or not
+
+
+db.test.find({id : {$in:[1,2,3,4,5]}}).sort({"moviename":1}).pretty()
+//check include and then sort in from of ascending order
+
+db.test.find({id : {$in:[1,2,3,4,5]}}).sort({"moviename":-1}).pretty()
+//this will checkinclude anf then sort in decending order
+db.test.find({id : {$in:[1,2,3,4,5]}}).sort({"moviename":-1, budget:10294}).pretty()
+//multiple sorting parameters in same way
+
+
+db.test.find({"moviename": /eliza/})
+//search which have eliza name
+
+
+
+db.test.find({id : {$in:[1,2,3,4,5]}}).sort({"moviename":-1}).skip(2).limit(2).pretty()
+
+
+
+db.test.find({$and : [{production:{$gt:2000}}, {budget:{$gt:10000}}]}).pretty()
+//greater than 2000 and 10000
+
+
+
+
+db.test.find({$nor:[{production:{$lt:2000}}, {budget:{$lt:10000}}]}).pretty()
+//first check nor after 2000 nor greater than 10000
+
+
+
+
+db.test.find({$and : [{production:{$eq:2000}}, {budget:{$eq:12144}}]}).pretty()
+//include 2000 year and 12144 budget
+
+
+
+
+db.test.find({$and : [{production:{$gt:2000}}, {production:{$lt:2010}}]}).pretty()
+//greater than 2000 and lesser than 2010
+
+
+
+
+
+
+db.test.find().sort({moviename:-1}).pretty()
+//sort in decending order
+
+
+
+db.test.find().skip(10).limit(10)
+//this will skip 10 and then prind next 10
+
+
+
+
+
+
+db.test.find().limit(10).forEach(("moviegerne")=>{return delete("moviegerne")})

@@ -1,0 +1,82 @@
+show dbs
+// for user databases inside the pc
+show databases
+//same command
+
+db.dropDatabase()
+//delete database
+
+use test
+//for database creation
+
+db.help()
+//showing possible operation
+
+db.user.insert({firstname:"yogesh"})
+//for create collectio of any user
+
+show collections
+
+db.user.drop()
+
+db.user.insert({firstname:"yogesh"})
+//for single input database
+
+db.user.insertMany([{firstname: "shrikrushna"},{age:"25"}, {city: "malkapur"}])
+//for multiple input database
+
+
+
+mongo
+
+//we can import data in mongocompass 
+
+
+db.find().preety()
+// for showing database in effective format
+db.user.find({"gender":"Male"})
+//for searching all gender Male
+
+db.user.findOne({"gender":"Male"})
+//searching first gender Male
+
+
+//update & delete are permanent operations which will do changes in database permanently
+db.user.update({"_id" : ObjectId("519ad16bde8g57g344w860cd")}, {"last_name": "yogesh"})
+
+
+db.user.update({"_id" : ObjectId("519ad16bde8g57g344w860cd")}, {$set:{"last_name": "yogesh"}})
+//this will update single insert
+
+
+db.user.updateMany({"gender":"Male"}, {$set:{"gender": "Female", "email":"123"}})
+//object with Male
+
+
+
+db.user.reomve({"lastname":"sambare"})
+//for reomve all stored lastname including sambare or other yogesh name
+//reomve works for removeMany
+
+db.user.reomve({"lastname":"sambare"}, 2)
+//for delete quantity of objects
+
+
+db.user.deleteOne({"gender" : "Genderfluid"})
+//to delete only single object
+
+
+
+db.user.deleteMany({"gender" : "Female"})
+//to delete multiple object
+
+
+ db.user.drop() 
+ //drop the collection storing
+
+
+ db.dropDatabase
+ //for deleting delete database
+
+ctrl + c
+// from exicting to database
